@@ -1,5 +1,9 @@
 /* VARIABLES
 // ------------------------- */
+
+
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap";
+
 /* GENERAL
 // ------------------------- */
 body {
@@ -126,8 +130,10 @@ body {
 
 /* MAP
 // ------------------------- */
-//#map {
-//  height: 400px; }
+
+.vue-map-container {
+  height: 400px;
+}
 
 /* RESULTS
 // ------------------------- */
@@ -161,6 +167,11 @@ body {
 
 /* PAGINATION
 // ------------------------- */
+
+.ais-pagination {
+  @extend .pagination;
+}
+
 #pagination {
   text-align: center; }
 #pagination .ais-pagination__item {
@@ -170,11 +181,11 @@ body {
   color: #FF585B;
   border-radius: 4px;
   background: transparent; }
-#pagination .pagination > .ais-pagination__item--active > a {
+#pagination .ais-pagination > .ais-pagination__item--active > a {
   color: #FFFFFF;
   border-color: #FF585B;
   background: #FF585B; }
-#pagination .pagination > li > a:focus, #pagination .pagination > li > a:hover, #pagination .pagination > li > span:focus, #pagination .pagination > li > span:hover {
+#pagination .ais-pagination > li > a:focus, #pagination .ais-pagination > li > a:hover, #pagination .ais-pagination > li > span:focus, #pagination .ais-pagination > li > span:hover {
   color: #FFFFFF;
   border-color: #FF585B;
   background: #FF585B; }
