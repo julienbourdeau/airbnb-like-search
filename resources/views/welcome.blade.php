@@ -19,13 +19,16 @@
 
 <div id="app">
 
+    <ais-index  app-id="{{ config('scout.algolia.id') }}"
+                api-key="71736011342974040f4497e2994e3700"
+                index-name="homes">
 
         <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
             <header class="navbar navbar-static-top aisdemo-navbar">
                 <a href="https://community.algolia.com/vue-instantsearch/" class="logo"><img src="/img/instantsearch-Vue-medal.svg" width=40 ></a>
                 <i class="fa fa-search"></i>
 
-                {{--Text input--}}
+                <ais-input placeholder="Where do you want to go?"></ais-input>
 
             </header>
         </div>
@@ -45,16 +48,16 @@
                         </div>
                         <!-- Room types -->
                         <div id="room_types" class="row aisdemo-filter">
-                            {{--<div class="col-sm-2 aisdemo-filter-title">Room Type</div>--}}
+                            <div class="col-sm-2 aisdemo-filter-title">Room Type</div>
 
-                                {{--Refinement list--}}
+                                <ais-refinement-list attribute-name="room_type"></ais-refinement-list>
 
                         </div>
                     </div>
 
                     <div class="row">
                         <div id="stats">
-                            {{--Stats--}}
+                            <ais-stats></ais-stats>
                         </div>
                     </div>
 
@@ -65,7 +68,13 @@
                 <div class="col-sm-5 aisdemo--right-column">
                     <div id="map">
 
-                        {{--Map--}}
+                        <gmap-map :center="{lat: 52.3746951, lng: 4.8285838}" :zoom="12">
+                            <ais-results>
+                                <template scope="{ result }">
+                                    <gmap-marker :position="result._geoloc"></gmap-marker>
+                                </template>
+                            </ais-results>
+                        </gmap-map>
 
                     </div>
                 </div>
@@ -77,13 +86,19 @@
         <div class="container-fluid" id="results">
             <div class="row" id="hits">
 
-                {{--Results list--}}
+                <ais-results>
+                    <template scope="{ result }">
+                        <home-item :home="result"></home-item>
+                    </template>
+                </ais-results>
 
             </div>
 
             <div class="row">
                 <div id="pagination">
-                    {{--pagination--}}
+
+                    <ais-pagination></ais-pagination>
+
                 </div>
 
                 <div class="thank-you">
@@ -92,6 +107,7 @@
             </div>
         </div>
 
+    </ais-index>
 
 </div>
 
